@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\loginPage;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::controller(loginPage::class)->group(function (){
-    Route::get("/login", [loginPage::class, "login"]);
-    Route::post("/submitLogin", [loginPage::class, "submitLogin"]);
+Route::controller(userController::class)->group(function (){
+    Route::get("/login","login");
+    Route::post("/submitLogin", "submitLogin");
+    Route::post("/submitSignUp", "submitSignUp");
+    Route::get("/signup", "signUp");
 });
 Route::get("/", [\App\Http\Controllers\homeController::class, "index"]);
